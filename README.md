@@ -85,3 +85,14 @@ The average payoff across all simulations provides an estimate of the option val
 C=S_0N(d_1)-Ke^{-rT}N(d_2)
 ```
 This gives a rough idea for validating the simulated value.
+
+## Methedology:
+1. Download historical apple data
+2. Calculate daily log returns
+3. Estimate drift and volatility
+4. Simulate stock prices using Geometric Brownian Motion
+5. Generate multiple future stock price paths
+6. Calculate option payoffs
+7. Average the payoffs and convert from future prices into current prices
+8. Compare the Monte-Carlo estimate with the Black-Scholes value 
+
