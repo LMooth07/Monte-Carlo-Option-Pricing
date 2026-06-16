@@ -94,5 +94,28 @@ This gives a rough idea for validating the simulated value.
 5. Generate multiple future stock price paths
 6. Calculate option payoffs
 7. Average the payoffs and convert from future prices into current prices
-8. Compare the Monte-Carlo estimate with the Black-Scholes value 
+8. Compare the Monte-Carlo estimate with the Black-Scholes value
 
+## Assumptions:
+- Markets have no transaction costs or taxes
+- Trading can be continuous
+- Interest rate remains constant
+- Volatility is constant through the simulation period
+- Stock prices follow a geometric brownian motion process
+- The option is European and can only be exercised at expirary
+Using these assumptions simplifies the simulation process however may not capture the true market behaviour
+
+## Results 
+### Historical Apple stock price graph
+<img width="640" height="480" alt="AAPL stock data" src="https://github.com/user-attachments/assets/a9ff2d31-c547-4581-a548-320800fab823" />
+This first graph simply demontrates how historical Apple stock data was downloaded using Yahoo Finance. From this data daily log returns were calculated then used to estimate the drift and volatility parameters required for the Geometric Brownian Motion model.
+
+### Simulated stock price paths 
+<img width="640" height="480" alt="AAPL_simulation" src="https://github.com/user-attachments/assets/8ade0f3e-d8e7-425e-a047-f01694451abb" />
+Using the estimated drift and volatility, multiple stock price paths were simulated over a one year period using the Geometric Brownian Motion model. All paths begin at the initial stock price which is an input for the function. The paths diverge as random shocks accumulate, the increasing spread of the paths illustrates the uncertainity in predicting future stock prices.
+
+### Distribution of simulated final stock prices 
+<img width="640" height="480" alt="Final price plot " src="https://github.com/user-attachments/assets/9ffaa6b6-26be-4b17-9257-6de1e7a156f0" />
+The histogram produced shows the distribution of stock prices at the end of the one year simulation period. The distribution has a rightward skew, with most outcomes concertrated at a centre followed by a long right tail of extreme positive outcomes. This behaviour is consistant with the expectations formed from the logarithmic distribution implied by the Geometric Brownian Motion model. 
+
+### Monte Carlo convergence 
