@@ -119,3 +119,5 @@ Using the estimated drift and volatility, multiple stock price paths were simula
 The histogram produced shows the distribution of stock prices at the end of the one year simulation period. The distribution has a rightward skew, with most outcomes concertrated at a centre followed by a long right tail of extreme positive outcomes. This behaviour is consistant with the expectations formed from the logarithmic distribution implied by the Geometric Brownian Motion model. 
 
 ### Monte Carlo convergence 
+<img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/0a8d7f31-d25c-4434-9c3a-ebaa4888f06d" />
+The option price estiamte was calculated using increasing numbers of Monte Carlo simulations. 
