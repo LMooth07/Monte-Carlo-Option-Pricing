@@ -99,11 +99,6 @@ def convergence_plot(s0, k, r, sig, T, N):
 
 
 
-TSLA_data = yf.download('TSLA',
-                        start = '2020-01-01',
-                        end = '2026-05-31')
-
-
 AAPL_data = yf.download('AAPL',
                    start = '2020-01-01',
                    end = '2025-01-01')
@@ -114,11 +109,6 @@ def AAPL_stock_plot ():
     AAPL_data["Close"].plot()
     plt.title('Apple Stock Price')
 
-def TSLA_stock_plot ():
-    TSLA_data["Close"].plot()
-    plt.title('Tesla Stock Price')
-
-    
 
 AAPL_data["Returns"] = np.log(AAPL_data["Close"]/AAPL_data["Close"].shift(1))
 AAPL_returns = AAPL_data["Returns"].dropna()
@@ -127,11 +117,3 @@ AAPL_mu_daily = AAPL_returns.mean()
 AAPL_sigma_daily = AAPL_returns.std()
 AAPL_mu = AAPL_mu_daily * 252
 AAPL_sigma = AAPL_sigma_daily * np.sqrt(252)
-
-
-
-TSLA_data["Returns"] = np.log(TSLA_data["Close"]/TSLA_data["Close"].shift(1))
-TSLA_returns = TSLA_data["Returns"].dropna()      
-
-TSLA_mu = TSLA_returns.mean() * 252
-TSLA_sigma = TSLA_returns.std() * np.sqrt(252)
