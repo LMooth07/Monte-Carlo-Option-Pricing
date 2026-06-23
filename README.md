@@ -103,21 +103,47 @@ This gives a rough idea for validating the simulated value.
 - Volatility is constant through the simulation period
 - Stock prices follow a geometric brownian motion process
 - The option is European and can only be exercised at expirary
-Using these assumptions simplifies the simulation process however may not capture the true market behaviour
+Using these assumptions simplifies the simulation process however may not capture the true market behaviour.
 
 ## Results 
 ### Historical Apple stock price graph
 <img width="640" height="480" alt="AAPL stock data" src="https://github.com/user-attachments/assets/a9ff2d31-c547-4581-a548-320800fab823" />
+
 This first graph simply demontrates how historical Apple stock data was downloaded using Yahoo Finance. From this data daily log returns were calculated then used to estimate the drift and volatility parameters required for the Geometric Brownian Motion model.
 
 ### Simulated stock price paths 
 <img width="640" height="480" alt="AAPL_simulation" src="https://github.com/user-attachments/assets/8ade0f3e-d8e7-425e-a047-f01694451abb" />
+
 Using the estimated drift and volatility, multiple stock price paths were simulated over a one year period using the Geometric Brownian Motion model. All paths begin at the initial stock price which is an input for the function. The paths diverge as random shocks accumulate, the increasing spread of the paths illustrates the uncertainity in predicting future stock prices.
 
 ### Distribution of simulated final stock prices 
 <img width="640" height="480" alt="Final price plot " src="https://github.com/user-attachments/assets/9ffaa6b6-26be-4b17-9257-6de1e7a156f0" />
+
 The histogram produced shows the distribution of stock prices at the end of the one year simulation period. The distribution has a rightward skew, with most outcomes concertrated at a centre followed by a long right tail of extreme positive outcomes. This behaviour is consistant with the expectations formed from the logarithmic distribution implied by the Geometric Brownian Motion model. 
 
 ### Monte Carlo convergence 
 <img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/0a8d7f31-d25c-4434-9c3a-ebaa4888f06d" />
-The option price estiamte was calculated using increasing numbers of Monte Carlo simulations. 
+
+The option price estiamte was calculated using increasing numbers of Monte Carlo simulations. The graph shows how as the number of simulations increases, the estimate converges towards a stable value. This beaviour is consitant with the law of large numbers and demonstrates how the estimate becomes more reliable as the sample size increases.
+
+### Option Pricing Comparison
+
+| Method | Option Price |
+|----------|----------|
+| Monte Carlo | 63.28 |
+| Black-Scholes | 63.16 |
+
+The percentage difference in the Monte Carlo simulation method and the Black-Scholes option call is 0.19%. This provides sufficient eveidence to suggest the simulation is working correctly to calculate the expaected payoff of the option. The small remaining difference is due to random sampling error which decreases as number of simulations increases.
+
+## Future Improvments 
+
+Extentions to this project include:
+- Pricing European put options
+- Extending the model to work when the payoff depends on the average stock price over time for Asian options
+- Improve Monte Carlo efficiency using variance reducing techniques 
+- Use a stochastic volatility model rather than assuming it remains constant
+- Extending the model to multiple assets and portfolio optimisation
+
+## Conclusion and Key Findings
+
+Using estimated parameters from historical Apple data I sucsessfully simulated stock prices that exhibit a lognormal behaviour as predicted by the Geometric Brownian Motion model. Monte Carlo option pricing converged to a stable value as the number of simulations increased, demonstrating the law of large numbers. The Monte Carlo simulation method was found to be very close to the analytical Black-Scholes method, validating the methedology. 
